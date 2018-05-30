@@ -10,6 +10,7 @@ mybatis:
   configLocation: classpath:mybatis-config.xml
   mapperLocations: classpath*:mapper/*.xml
 
+#elasticsearch配置
 elasticsearch:
   cluster:
     name: elasticsearch

@@ -241,21 +241,11 @@ public class ElasticSearchServiceImpl implements ElasticSearchService {
         Optional<Integer> userFollowers = Optional.ofNullable(searchVo.getUserFollowers());
         double userScore = (userAgrees.orElse(500) + userThanks.orElse(500) + userCollects.orElse(500)
                 + userFollowers.orElse(500))/8000;
-//        double userScore = (userAgrees.orElse(500) + userThanks.orElse(500) + userCollects.orElse(500)
-//                + userFollowers.orElse(500))/userMapper.maxUserScore() * 100;
 
 
         Optional<Integer> textAgrees = Optional.ofNullable(searchVo.getTextAgrees());
         Optional<Integer> textComments = Optional.ofNullable(searchVo.getTextComments());
         double textScore = (textAgrees.orElse(500) + textComments.orElse(100))/100;
-
-        while (userScore > 100){
-            userScore *= 0.9;
-        }
-        while (textScore > 100){
-            textScore *= 0.9;
-        }
-
         double matchScore = searchVo.getSearchScore() * 2.5;
         double comparedScore = userScore * userAccount + matchScore * matchAccount + textScore * textAccount;
         result.setUserScore((int) userScore);

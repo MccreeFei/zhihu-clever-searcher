@@ -49,10 +49,10 @@ public class MainController {
         return "about";
     }
 
-//    @RequestMapping("/import")
-//    @ResponseBody
-//    public String importEs(){
-//        boolean b = elasticSearchService.importEsData();
-//        return String.valueOf(b);
-//    }
+    @RequestMapping("/import")
+    @ResponseBody
+    public String importEs(){
+        boolean b = elasticSearchService.importEsData();
+        return String.valueOf(b);
+    }
 }

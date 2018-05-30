@@ -10,8 +10,9 @@ mybatis:
   configLocation: classpath:mybatis-config.xml
   mapperLocations: classpath*:mapper/*.xml
 
+#elasticsearch配置
 elasticsearch:
   cluster:
     name: elasticsearch
-  host: 120.79.77.164
+  host: 127.0.0.1
   port: 9300
