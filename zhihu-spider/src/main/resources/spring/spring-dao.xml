@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:component-scan base-package="cn.mccreefei.zhihu" />
+    <context:property-placeholder location="classpath:db.properties, zhihu.properties"/>
+
+    <bean id="datasource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://${jdbc.host}:3306/${jdbc.database}?characterEncoding=utf-8&amp;serverTimezone=GMT" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <!-- 初始连接池数量 -->
+        <property name="initialSize" value="3" />
+        <!-- 最小连接池数量 -->
+        <property name="minIdle" value="3" />
+        <!-- 最大连接池数量 -->
+        <property name="maxActive" value="10" />
+
+    </bean>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 配置数据源 -->
+        <property name="dataSource" ref="datasource"/>
+        <!-- mapper文件路径 -->
+        <property name="mapperLocations" value="classpath:/mybatis/**/*Mapper.xml"/>
+        <!-- 包自动扫描 -->
+        <property name="typeAliasesPackage" value="cn.mccreefei.zhihu.model"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.mccreefei.zhihu.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
+    <!--&lt;!&ndash; Simple SeleniumDownloader &ndash;&gt;-->
+    <!--<bean class="cn.mccreefei.zhihu.magic.SimpleSeleniumDownloader" >-->
+        <!--&lt;!&ndash;<constructor-arg name="driverType" value="${CHROME_DRIVER}" />&ndash;&gt;-->
+        <!--&lt;!&ndash;<constructor-arg name="path" value="${CHROME_DRIVER_PATH}" />&ndash;&gt;-->
+        <!--&lt;!&ndash;<constructor-arg name="phantomJSPath" value="${PHANTOMJS_PATH}" />&ndash;&gt;-->
+        <!--<constructor-arg name="path" value="http://127.0.0.1:8991" />-->
+        <!--<constructor-arg name="driverType" value="${REMOTE_DRIVER_WITH_GHOST}" />-->
+    <!--</bean>-->
+
+    <bean class="cn.mccreefei.zhihu.magic.SimpleSeleniumDownloader" destroy-method="close" />
+
+
+</beans>

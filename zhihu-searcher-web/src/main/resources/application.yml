@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: prod
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+
+  freemarker:
+    template-loader-path: classpath:/templates/
+    cache: false
+    charset: UTF-8
+    content-type: text/html
+    expose-request-attributes: true
+    suffix: .ftl
+    check-template-location: true
+  resources:
+    static-locations: classpath:/static/
+
+account:
+  match: 0.7
+  text: 0.2
+  user: 0.1
+
+
+

@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/zhihu?characterEncoding=utf-8&serverTimezone=GMT
+    username: root
+    password: admin
+
+
+mybatis:
+  configLocation: classpath:mybatis-config.xml
+  mapperLocations: classpath*:mapper/*.xml
+
+elasticsearch:
+  cluster:
+    name: elasticsearch
+  host: 120.79.77.164
+  port: 9300
