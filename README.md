@@ -8,3 +8,7 @@ ZhihuSearcher分为三个模块：
 1. zhihu-spider 爬虫模块，使用JAVA开源框架WebMagic爬取知乎网站相关数据。WebMagic框架使用移步[Github](https://github.com/code4craft/webmagic/)。另外提供本人爬取到的部分数据仅供参考，sql文件位置`/sql/zhihu.sql`，mysql导入即可使用。
 2. zhihu-service 服务模块，使用ElasticSearch完成查询排序逻辑。ElasticSearch下载配置请自行查阅相关文档，需要注意的是ElasticSearch默认分词器是不支持中文的，所以需要配置中文分词器IK，IK分词器下载配置移步[Github](https://github.com/medcl/elasticsearch-analysis-ik)。ElasticSearch运行成功后请在项目的配置文件中更改ElasticSearch相应的地址、结点信息。
 3. zhihu-searcher-web web模块，负责接收客户端请求以及相应请求，采用SpringBoot框架。运行后先调取一次`/zhihusearcher/import`接口，将mysql中的文本信息导入到ElasticSearch当中提供查询，导入时间可能有点长，请耐心等待。
+
+## 试用
+>>> 随缘链接（可能遭遇服务器到期崩溃等不可抗因素）
+[www.mccreefei.cn/zhihusearcher](http://www.mccreefei.cn/zhihusearcher)
