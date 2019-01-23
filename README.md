@@ -11,4 +11,4 @@ ZhihuSearcher分为三个模块：
 
 ## 试用
 >>> 随缘链接（可能遭遇服务器到期崩溃等不可抗因素）
-[www.mccreefei.cn/zhihusearcher](http://www.mccreefei.cn/zhihusearcher)
+[https://www.mccreefei.cn/zhihusearcher](https://www.mccreefei.cn/zhihusearcher)
